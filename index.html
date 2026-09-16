@@ -1,0 +1,1673 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BRB Infra Pvt Ltd — Building Tomorrow</title>
+    <meta
+      name="description"
+      content="BRB Infra Pvt Ltd — Construction, infrastructure and development solutions."
+    />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/index.js"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ink: "#07131C",
+              charcoal: "#0D1B24",
+              gold: "#F5B72C",
+              gold2: "#FFC94A",
+              concrete: "#F5F5F2",
+              muted: "#8D9AA3",
+            },
+
+            fontFamily: {
+              sans: ["DM Sans", "sans-serif"],
+              display: ["Manrope", "sans-serif"],
+            },
+
+            boxShadow: {
+              glow: "0 0 60px rgba(245,183,44,.15)",
+            },
+
+            animation: {
+              float: "float 5s ease-in-out infinite",
+              marquee: "marquee 25s linear infinite",
+              pulseSlow: "pulse 3s infinite",
+            },
+
+            keyframes: {
+              float: {
+                "0%,100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+
+              marquee: {
+                "0%": { transform: "translateX(0)" },
+                "100%": { transform: "translateX(-50%)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: #f5f5f2;
+        color: #07131c;
+        overflow-x: hidden;
+      }
+
+      .display {
+        font-family: "Manrope", sans-serif;
+      }
+
+      ::selection {
+        background: #f5b72c;
+        color: #07131c;
+      }
+
+      .noise {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+      }
+
+      .hero-bg {
+        background:
+          linear-gradient(
+            90deg,
+            rgba(4, 12, 17, 0.96) 0%,
+            rgba(4, 12, 17, 0.78) 42%,
+            rgba(4, 12, 17, 0.15) 100%
+          ),
+          url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2200&q=90")
+            center/cover;
+      }
+
+      .about-image {
+        background:
+          linear-gradient(180deg, rgba(7, 19, 28, 0.05), rgba(7, 19, 28, 0.45)),
+          url("https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=1200&q=85")
+            center/cover;
+      }
+
+      .project-image {
+        transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      .project-card:hover .project-image {
+        transform: scale(1.08);
+      }
+
+      .service-card {
+        transition:
+          transform 0.4s ease,
+          box-shadow 0.4s ease,
+          border-color 0.4s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 70px rgba(7, 19, 28, 0.13);
+        border-color: rgba(245, 183, 44, 0.55);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(35px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .delay-1 {
+        transition-delay: 0.1s;
+      }
+      .delay-2 {
+        transition-delay: 0.2s;
+      }
+      .delay-3 {
+        transition-delay: 0.3s;
+      }
+      .delay-4 {
+        transition-delay: 0.4s;
+      }
+
+      .nav-scrolled {
+        background: rgba(7, 19, 28, 0.9) !important;
+        backdrop-filter: blur(18px);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .cursor-glow {
+        position: fixed;
+        width: 300px;
+        height: 300px;
+        border-radius: 999px;
+        pointer-events: none;
+        background: radial-gradient(
+          circle,
+          rgba(245, 183, 44, 0.08),
+          transparent 65%
+        );
+        transform: translate(-50%, -50%);
+        z-index: 0;
+      }
+
+      .line {
+        width: 44px;
+        height: 3px;
+        background: #f5b72c;
+      }
+
+      .gold-gradient {
+        background: linear-gradient(135deg, #f5b72c, #ffd66d);
+      }
+
+      .grid-bg {
+        background-image:
+          linear-gradient(rgba(7, 19, 28, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(7, 19, 28, 0.045) 1px, transparent 1px);
+        background-size: 45px 45px;
+      }
+
+      .hero-title span {
+        display: inline-block;
+      }
+
+      .mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+      }
+
+      .mobile-menu.open {
+        max-height: 500px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Cursor -->
+    <div id="cursorGlow" class="cursor-glow hidden lg:block"></div>
+
+    <!-- ========================================================= -->
+    <!-- NAVBAR -->
+    <!-- ========================================================= -->
+
+    <header
+      id="navbar"
+      class="fixed top-0 left-0 w-full z-50 transition-all duration-500"
+    >
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="h-20 flex items-center justify-between">
+          <!-- Logo -->
+          <a href="#home" class="flex items-center gap-3 group">
+            <div class="w-11 h-11 relative">
+              <svg
+                viewBox="0 0 48 48"
+                class="w-full h-full"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M7 40V18L15 11V40H7Z" fill="#F5B72C" />
+                <path d="M17 40V8L25 3V40H17Z" fill="#F5B72C" />
+                <path d="M27 40V15L35 9V40H27Z" fill="#F5B72C" />
+                <path
+                  d="M4 43H39"
+                  stroke="#F5B72C"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+
+            <div>
+              <div class="text-white font-black display tracking-tight text-xl">
+                BRB
+              </div>
+
+              <div
+                class="text-white/60 text-[9px] uppercase tracking-[.18em] -mt-1"
+              >
+                Infra Pvt Ltd
+              </div>
+            </div>
+          </a>
+
+          <!-- Desktop Nav -->
+          <nav class="hidden lg:flex items-center gap-8">
+            <a
+              href="#home"
+              class="text-white text-sm hover:text-gold transition"
+            >
+              Home
+            </a>
+
+            <a
+              href="#about"
+              class="text-white/70 text-sm hover:text-gold transition"
+            >
+              About
+            </a>
+
+            <a
+              href="#services"
+              class="text-white/70 text-sm hover:text-gold transition"
+            >
+              Services
+            </a>
+
+            <a
+              href="#projects"
+              class="text-white/70 text-sm hover:text-gold transition"
+            >
+              Projects
+            </a>
+
+            <a
+              href="#why-us"
+              class="text-white/70 text-sm hover:text-gold transition"
+            >
+              Why Us
+            </a>
+
+            <a
+              href="#testimonials"
+              class="text-white/70 text-sm hover:text-gold transition"
+            >
+              Testimonials
+            </a>
+
+            <a
+              href="#contact"
+              class="text-white/70 text-sm hover:text-gold transition"
+            >
+              Contact
+            </a>
+          </nav>
+
+          <a
+            href="#contact"
+            class="hidden sm:flex items-center gap-2 gold-gradient text-ink font-bold px-5 py-3 rounded-xl text-sm hover:scale-105 transition"
+          >
+            Get a Quote
+            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+          </a>
+
+          <!-- Mobile -->
+          <button id="menuButton" class="lg:hidden text-white p-2">
+            <i data-lucide="menu"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu lg:hidden">
+          <div
+            class="bg-ink/95 rounded-2xl mb-4 p-5 space-y-4 border border-white/10"
+          >
+            <a href="#home" class="block text-white">Home</a>
+            <a href="#about" class="block text-white/70">About</a>
+            <a href="#services" class="block text-white/70">Services</a>
+            <a href="#projects" class="block text-white/70">Projects</a>
+            <a href="#why-us" class="block text-white/70">Why Us</a>
+            <a href="#testimonials" class="block text-white/70">Testimonials</a>
+            <a href="#contact" class="block text-white/70">Contact</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ========================================================= -->
+    <!-- HERO -->
+    <!-- ========================================================= -->
+
+    <section
+      id="home"
+      class="relative min-h-screen hero-bg noise flex items-center overflow-hidden"
+    >
+      <div class="absolute inset-0 bg-ink/10"></div>
+
+      <div
+        class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-ink to-transparent"
+      ></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-5 lg:px-8 w-full pt-28">
+        <div class="max-w-3xl">
+          <div class="reveal flex items-center gap-3 mb-6">
+            <div class="line"></div>
+
+            <span
+              class="text-gold text-xs font-bold uppercase tracking-[.25em]"
+            >
+              Welcome to BRB Infra Pvt Ltd
+            </span>
+          </div>
+
+          <h1
+            class="hero-title reveal delay-1 text-white display font-black text-5xl sm:text-6xl lg:text-8xl leading-[.94] tracking-[-.045em]"
+          >
+            Building Today
+            <br />
+            <span class="text-white">For A </span>
+            <span class="text-gold">Better Tomorrow.</span>
+          </h1>
+
+          <p
+            class="reveal delay-2 text-white/70 text-lg lg:text-xl max-w-xl leading-relaxed mt-8"
+          >
+            We transform ideas into enduring structures through precision
+            engineering, innovative construction and uncompromising quality.
+          </p>
+
+          <div class="reveal delay-3 flex flex-wrap gap-4 mt-9">
+            <a
+              href="#projects"
+              class="group flex items-center gap-3 gold-gradient text-ink font-bold px-6 py-4 rounded-xl hover:scale-105 transition"
+            >
+              Explore Our Projects
+
+              <span
+                class="w-7 h-7 bg-ink/10 rounded-full flex items-center justify-center group-hover:translate-x-1 transition"
+              >
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </span>
+            </a>
+
+            <a
+              href="#contact"
+              class="flex items-center gap-3 text-white border border-white/30 px-6 py-4 rounded-xl hover:bg-white hover:text-ink transition"
+            >
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating Trust Card -->
+      <div
+        class="hidden xl:block absolute right-10 top-1/2 -translate-y-1/2 w-60"
+      >
+        <div class="space-y-5">
+          <div class="flex gap-4 items-center text-white">
+            <div
+              class="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center"
+            >
+              <i data-lucide="shield-check" class="text-gold w-5"></i>
+            </div>
+
+            <div>
+              <div class="font-bold text-sm">Trusted</div>
+              <div class="text-white/50 text-xs">Construction Partner</div>
+            </div>
+          </div>
+
+          <div class="h-px bg-white/15"></div>
+
+          <div class="flex gap-4 items-center text-white">
+            <div
+              class="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center"
+            >
+              <i data-lucide="users" class="text-gold w-5"></i>
+            </div>
+
+            <div>
+              <div class="font-bold text-sm">Quality</div>
+              <div class="text-white/50 text-xs">Safety First</div>
+            </div>
+          </div>
+
+          <div class="h-px bg-white/15"></div>
+
+          <div class="flex gap-4 items-center text-white">
+            <div
+              class="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center"
+            >
+              <i data-lucide="building-2" class="text-gold w-5"></i>
+            </div>
+
+            <div>
+              <div class="font-bold text-sm">On-Time</div>
+              <div class="text-white/50 text-xs">Project Delivery</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="absolute bottom-0 left-0 right-0 z-20">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+          <div
+            class="bg-ink/90 backdrop-blur-xl border border-white/10 rounded-t-3xl px-5 lg:px-10 py-7"
+          >
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0">
+              <div
+                class="flex items-center gap-4 lg:border-r border-white/10 lg:mr-8"
+              >
+                <i data-lucide="hard-hat" class="text-gold w-8 h-8"></i>
+
+                <div>
+                  <div
+                    class="counter text-white text-3xl font-black"
+                    data-target="10"
+                  >
+                    0
+                  </div>
+                  <div class="text-white/50 text-sm">Years Experience</div>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center gap-4 lg:border-r border-white/10 lg:mr-8"
+              >
+                <i data-lucide="building" class="text-gold w-8 h-8"></i>
+
+                <div>
+                  <div class="flex text-white text-3xl font-black">
+                    <span class="counter" data-target="250">0</span>+
+                  </div>
+                  <div class="text-white/50 text-sm">Projects Completed</div>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center gap-4 lg:border-r border-white/10 lg:mr-8"
+              >
+                <i data-lucide="users-round" class="text-gold w-8 h-8"></i>
+
+                <div>
+                  <div class="flex text-white text-3xl font-black">
+                    <span class="counter" data-target="100">0</span>+
+                  </div>
+                  <div class="text-white/50 text-sm">Happy Clients</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4">
+                <i data-lucide="trophy" class="text-gold w-8 h-8"></i>
+
+                <div>
+                  <div class="text-white text-3xl font-black">100%</div>
+                  <div class="text-white/50 text-sm">Commitment to Quality</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SERVICES -->
+    <!-- ========================================================= -->
+
+    <section id="services" class="py-28 bg-concrete grid-bg">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-12 items-end mb-14">
+          <div class="lg:col-span-5 reveal">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="line"></div>
+              <span
+                class="text-gold text-xs font-bold uppercase tracking-[.25em]"
+              >
+                Our Services
+              </span>
+            </div>
+
+            <h2 class="display font-black text-4xl lg:text-6xl leading-tight">
+              Comprehensive
+              <br />
+              Construction
+              <span class="text-gold">Solutions.</span>
+            </h2>
+          </div>
+
+          <div class="lg:col-span-5 lg:col-start-8 reveal delay-1">
+            <p class="text-gray-500 text-lg leading-relaxed">
+              From residential spaces to large-scale infrastructure, we deliver
+              end-to-end construction solutions built around quality, safety and
+              long-term value.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+          <!-- Service 1 -->
+          <div
+            class="service-card reveal bg-white border border-gray-200 rounded-3xl overflow-hidden"
+          >
+            <div class="h-52 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80"
+                class="w-full h-full object-cover"
+                alt="Residential construction"
+              />
+            </div>
+
+            <div class="p-7">
+              <div
+                class="w-12 h-12 rounded-2xl bg-gold/10 flex items-center justify-center mb-6"
+              >
+                <i data-lucide="house" class="text-gold"></i>
+              </div>
+
+              <h3 class="display text-xl font-black mb-3">
+                Residential Construction
+              </h3>
+
+              <p class="text-gray-500 leading-relaxed text-sm">
+                Modern homes designed and built with quality, comfort and
+                attention to every detail.
+              </p>
+
+              <a
+                href="#contact"
+                class="inline-flex items-center gap-2 text-sm font-bold mt-6 hover:text-gold transition"
+              >
+                Learn More
+                <i data-lucide="arrow-up-right" class="w-4"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Service 2 -->
+          <div
+            class="service-card reveal delay-1 bg-white border border-gray-200 rounded-3xl overflow-hidden"
+          >
+            <div class="h-52 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80"
+                class="w-full h-full object-cover"
+                alt="Commercial construction"
+              />
+            </div>
+
+            <div class="p-7">
+              <div
+                class="w-12 h-12 rounded-2xl bg-gold/10 flex items-center justify-center mb-6"
+              >
+                <i data-lucide="building-2" class="text-gold"></i>
+              </div>
+
+              <h3 class="display text-xl font-black mb-3">
+                Commercial Projects
+              </h3>
+
+              <p class="text-gray-500 leading-relaxed text-sm">
+                Functional commercial spaces engineered for productivity,
+                performance and growth.
+              </p>
+
+              <a
+                href="#contact"
+                class="inline-flex items-center gap-2 text-sm font-bold mt-6 hover:text-gold transition"
+              >
+                Learn More
+                <i data-lucide="arrow-up-right" class="w-4"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div
+            class="service-card reveal delay-2 bg-white border border-gray-200 rounded-3xl overflow-hidden"
+          >
+            <div class="h-52 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?auto=format&fit=crop&w=900&q=80"
+                class="w-full h-full object-cover"
+                alt="Infrastructure development"
+              />
+            </div>
+
+            <div class="p-7">
+              <div
+                class="w-12 h-12 rounded-2xl bg-gold/10 flex items-center justify-center mb-6"
+              >
+                <i data-lucide="construction" class="text-gold"></i>
+              </div>
+
+              <h3 class="display text-xl font-black mb-3">
+                Infrastructure Development
+              </h3>
+
+              <p class="text-gray-500 leading-relaxed text-sm">
+                Roads, bridges and infrastructure built to serve communities for
+                generations.
+              </p>
+
+              <a
+                href="#contact"
+                class="inline-flex items-center gap-2 text-sm font-bold mt-6 hover:text-gold transition"
+              >
+                Learn More
+                <i data-lucide="arrow-up-right" class="w-4"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Service 4 -->
+          <div
+            class="service-card reveal delay-3 bg-white border border-gray-200 rounded-3xl overflow-hidden"
+          >
+            <div class="h-52 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80"
+                class="w-full h-full object-cover"
+                alt="Renovation"
+              />
+            </div>
+
+            <div class="p-7">
+              <div
+                class="w-12 h-12 rounded-2xl bg-gold/10 flex items-center justify-center mb-6"
+              >
+                <i data-lucide="hammer" class="text-gold"></i>
+              </div>
+
+              <h3 class="display text-xl font-black mb-3">
+                Renovation & Remodeling
+              </h3>
+
+              <p class="text-gray-500 leading-relaxed text-sm">
+                Transforming existing spaces into modern, functional
+                environments.
+              </p>
+
+              <a
+                href="#contact"
+                class="inline-flex items-center gap-2 text-sm font-bold mt-6 hover:text-gold transition"
+              >
+                Learn More
+                <i data-lucide="arrow-up-right" class="w-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- ABOUT -->
+    <!-- ========================================================= -->
+
+    <section id="about" class="py-28 bg-white">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="reveal relative">
+            <div
+              class="about-image aspect-[4/5] rounded-[2rem] overflow-hidden"
+            ></div>
+
+            <div
+              class="absolute -bottom-8 -right-5 lg:-right-8 gold-gradient rounded-3xl p-7 shadow-glow"
+            >
+              <div class="text-4xl font-black display">10+</div>
+
+              <div class="text-sm font-bold mt-1">
+                Years of Building
+                <br />
+                Excellence
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal delay-1">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="line"></div>
+
+              <span
+                class="text-gold text-xs font-bold uppercase tracking-[.25em]"
+              >
+                About BRB Infra
+              </span>
+            </div>
+
+            <h2
+              class="display font-black text-4xl lg:text-6xl leading-tight mb-7"
+            >
+              Building With
+              <br />
+              <span class="text-gold">Purpose.</span>
+            </h2>
+
+            <p class="text-gray-500 text-lg leading-relaxed mb-5">
+              BRB Infra Pvt Ltd is a construction and infrastructure company
+              focused on delivering spaces that combine engineering excellence
+              with thoughtful design.
+            </p>
+
+            <p class="text-gray-500 leading-relaxed mb-8">
+              Our multidisciplinary teams bring together planning, engineering,
+              project management and construction expertise to deliver projects
+              safely, efficiently and responsibly.
+            </p>
+
+            <div class="grid sm:grid-cols-2 gap-5 mb-9">
+              <div class="flex gap-3">
+                <div
+                  class="w-10 h-10 shrink-0 rounded-full bg-gold/10 flex items-center justify-center"
+                >
+                  <i data-lucide="shield-check" class="w-5 text-gold"></i>
+                </div>
+
+                <div>
+                  <div class="font-bold">Quality Assurance</div>
+                  <div class="text-gray-500 text-sm mt-1">
+                    Quality at every stage.
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex gap-3">
+                <div
+                  class="w-10 h-10 shrink-0 rounded-full bg-gold/10 flex items-center justify-center"
+                >
+                  <i data-lucide="clock-3" class="w-5 text-gold"></i>
+                </div>
+
+                <div>
+                  <div class="font-bold">Timely Delivery</div>
+                  <div class="text-gray-500 text-sm mt-1">
+                    Projects delivered on schedule.
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex gap-3">
+                <div
+                  class="w-10 h-10 shrink-0 rounded-full bg-gold/10 flex items-center justify-center"
+                >
+                  <i data-lucide="users" class="w-5 text-gold"></i>
+                </div>
+
+                <div>
+                  <div class="font-bold">Skilled Team</div>
+                  <div class="text-gray-500 text-sm mt-1">
+                    Experienced professionals.
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex gap-3">
+                <div
+                  class="w-10 h-10 shrink-0 rounded-full bg-gold/10 flex items-center justify-center"
+                >
+                  <i data-lucide="leaf" class="w-5 text-gold"></i>
+                </div>
+
+                <div>
+                  <div class="font-bold">Sustainable Growth</div>
+                  <div class="text-gray-500 text-sm mt-1">
+                    Responsible construction.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a
+              href="#contact"
+              class="inline-flex items-center gap-3 bg-ink text-white px-6 py-4 rounded-xl font-bold hover:bg-gold hover:text-ink transition"
+            >
+              Discover Our Story
+              <i data-lucide="arrow-right" class="w-5"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- PROJECTS -->
+    <!-- ========================================================= -->
+
+    <section id="projects" class="py-28 bg-ink text-white">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div
+          class="flex flex-col lg:flex-row justify-between lg:items-end gap-8 mb-14 reveal"
+        >
+          <div>
+            <div class="flex items-center gap-3 mb-5">
+              <div class="line"></div>
+
+              <span
+                class="text-gold text-xs font-bold uppercase tracking-[.25em]"
+              >
+                Our Work
+              </span>
+            </div>
+
+            <h2 class="display font-black text-4xl lg:text-6xl">
+              Featured
+              <span class="text-gold">Projects.</span>
+            </h2>
+          </div>
+
+          <p class="text-white/50 max-w-md">
+            A glimpse of the structures and spaces we have helped bring to life.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- Project -->
+          <div class="project-card reveal group">
+            <div class="relative rounded-3xl overflow-hidden aspect-[4/5]">
+              <img
+                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85"
+                class="project-image absolute inset-0 w-full h-full object-cover"
+                alt="Green Valley Residences"
+              />
+
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent"
+              ></div>
+
+              <div class="absolute top-5 left-5">
+                <span
+                  class="bg-gold text-ink px-3 py-1.5 rounded-full text-xs font-bold"
+                >
+                  Residential
+                </span>
+              </div>
+
+              <div class="absolute bottom-6 left-6 right-6">
+                <h3 class="display font-black text-xl">
+                  Green Valley Residences
+                </h3>
+
+                <p class="text-white/60 text-sm mt-1">Hyderabad, Telangana</p>
+
+                <div
+                  class="mt-5 w-10 h-10 bg-white text-ink rounded-full flex items-center justify-center"
+                >
+                  <i data-lucide="arrow-up-right" class="w-5"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card reveal delay-1 group">
+            <div class="relative rounded-3xl overflow-hidden aspect-[4/5]">
+              <img
+                src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=85"
+                class="project-image absolute inset-0 w-full h-full object-cover"
+                alt="Skyline Business Park"
+              />
+
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent"
+              ></div>
+
+              <div class="absolute top-5 left-5">
+                <span
+                  class="bg-gold text-ink px-3 py-1.5 rounded-full text-xs font-bold"
+                >
+                  Commercial
+                </span>
+              </div>
+
+              <div class="absolute bottom-6 left-6 right-6">
+                <h3 class="display font-black text-xl">
+                  Skyline Business Park
+                </h3>
+
+                <p class="text-white/60 text-sm mt-1">Bengaluru, Karnataka</p>
+
+                <div
+                  class="mt-5 w-10 h-10 bg-white text-ink rounded-full flex items-center justify-center"
+                >
+                  <i data-lucide="arrow-up-right" class="w-5"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card reveal delay-2 group">
+            <div class="relative rounded-3xl overflow-hidden aspect-[4/5]">
+              <img
+                src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?auto=format&fit=crop&w=1000&q=85"
+                class="project-image absolute inset-0 w-full h-full object-cover"
+                alt="Riverside Flyover"
+              />
+
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent"
+              ></div>
+
+              <div class="absolute top-5 left-5">
+                <span
+                  class="bg-gold text-ink px-3 py-1.5 rounded-full text-xs font-bold"
+                >
+                  Infrastructure
+                </span>
+              </div>
+
+              <div class="absolute bottom-6 left-6 right-6">
+                <h3 class="display font-black text-xl">Riverside Flyover</h3>
+
+                <p class="text-white/60 text-sm mt-1">
+                  Vijayawada, Andhra Pradesh
+                </p>
+
+                <div
+                  class="mt-5 w-10 h-10 bg-white text-ink rounded-full flex items-center justify-center"
+                >
+                  <i data-lucide="arrow-up-right" class="w-5"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card reveal delay-3 group">
+            <div class="relative rounded-3xl overflow-hidden aspect-[4/5]">
+              <img
+                src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85"
+                class="project-image absolute inset-0 w-full h-full object-cover"
+                alt="Maple Villa Renovation"
+              />
+
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent"
+              ></div>
+
+              <div class="absolute top-5 left-5">
+                <span
+                  class="bg-gold text-ink px-3 py-1.5 rounded-full text-xs font-bold"
+                >
+                  Renovation
+                </span>
+              </div>
+
+              <div class="absolute bottom-6 left-6 right-6">
+                <h3 class="display font-black text-xl">
+                  Maple Villa Renovation
+                </h3>
+
+                <p class="text-white/60 text-sm mt-1">Chennai, Tamil Nadu</p>
+
+                <div
+                  class="mt-5 w-10 h-10 bg-white text-ink rounded-full flex items-center justify-center"
+                >
+                  <i data-lucide="arrow-up-right" class="w-5"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12 reveal">
+          <a
+            href="#contact"
+            class="inline-flex items-center gap-3 border border-white/20 px-6 py-4 rounded-xl hover:bg-gold hover:text-ink hover:border-gold transition font-bold"
+          >
+            View All Projects
+            <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- WHY US -->
+    <!-- ========================================================= -->
+
+    <section id="why-us" class="py-28 bg-white">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+          <div class="flex justify-center items-center gap-3 mb-5">
+            <div class="line"></div>
+
+            <span
+              class="text-gold text-xs font-bold uppercase tracking-[.25em]"
+            >
+              Why Choose Us
+            </span>
+
+            <div class="line"></div>
+          </div>
+
+          <h2 class="display text-4xl lg:text-6xl font-black">
+            Built On
+            <span class="text-gold">Trust.</span>
+          </h2>
+
+          <p class="text-gray-500 mt-5 text-lg">
+            Our approach is simple — build it right, build it safely, and build
+            it to last.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div
+            class="reveal p-8 rounded-3xl bg-concrete border border-gray-200"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl gold-gradient flex items-center justify-center mb-7"
+            >
+              <i data-lucide="users-round"></i>
+            </div>
+
+            <h3 class="display font-black text-xl">Experienced Team</h3>
+
+            <p class="text-gray-500 mt-3 leading-relaxed text-sm">
+              Skilled engineers, project managers and craftsmen working
+              together.
+            </p>
+          </div>
+
+          <div
+            class="reveal delay-1 p-8 rounded-3xl bg-concrete border border-gray-200"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl gold-gradient flex items-center justify-center mb-7"
+            >
+              <i data-lucide="cpu"></i>
+            </div>
+
+            <h3 class="display font-black text-xl">Modern Technology</h3>
+
+            <p class="text-gray-500 mt-3 leading-relaxed text-sm">
+              Smarter planning, modern construction methods and
+              technology-driven execution.
+            </p>
+          </div>
+
+          <div
+            class="reveal delay-2 p-8 rounded-3xl bg-concrete border border-gray-200"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl gold-gradient flex items-center justify-center mb-7"
+            >
+              <i data-lucide="hard-hat"></i>
+            </div>
+
+            <h3 class="display font-black text-xl">Safety First</h3>
+
+            <p class="text-gray-500 mt-3 leading-relaxed text-sm">
+              Strong safety standards embedded throughout every stage of our
+              projects.
+            </p>
+          </div>
+
+          <div
+            class="reveal delay-3 p-8 rounded-3xl bg-concrete border border-gray-200"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl gold-gradient flex items-center justify-center mb-7"
+            >
+              <i data-lucide="leaf"></i>
+            </div>
+
+            <h3 class="display font-black text-xl">Sustainable Solutions</h3>
+
+            <p class="text-gray-500 mt-3 leading-relaxed text-sm">
+              Responsible construction practices designed for long-term
+              environmental value.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- TESTIMONIALS -->
+    <!-- ========================================================= -->
+
+    <section id="testimonials" class="py-28 bg-concrete">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14 reveal"
+        >
+          <div>
+            <div class="flex items-center gap-3 mb-5">
+              <div class="line"></div>
+
+              <span
+                class="text-gold text-xs font-bold uppercase tracking-[.25em]"
+              >
+                Testimonials
+              </span>
+            </div>
+
+            <h2 class="display text-4xl lg:text-6xl font-black">
+              What Our Clients
+              <span class="text-gold">Say.</span>
+            </h2>
+          </div>
+
+          <p class="text-gray-500 max-w-sm">
+            Trust built through quality work, communication and consistent
+            delivery.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="reveal bg-white rounded-3xl p-8 border border-gray-200">
+            <div class="flex gap-1 text-gold mb-6">★ ★ ★ ★ ★</div>
+
+            <p class="text-gray-600 leading-relaxed">
+              “BRB Infra delivered our dream home with exceptional quality and
+              on time. Their attention to detail was impressive.”
+            </p>
+
+            <div class="flex items-center gap-4 mt-8">
+              <div
+                class="w-12 h-12 rounded-full bg-ink text-gold flex items-center justify-center font-bold"
+              >
+                RK
+              </div>
+
+              <div>
+                <div class="font-bold">Rakesh Kumar</div>
+                <div class="text-gray-400 text-sm">Home Owner</div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="reveal delay-1 bg-white rounded-3xl p-8 border border-gray-200"
+          >
+            <div class="flex gap-1 text-gold mb-6">★ ★ ★ ★ ★</div>
+
+            <p class="text-gray-600 leading-relaxed">
+              “Their project management was excellent. The team was transparent,
+              professional and extremely responsive.”
+            </p>
+
+            <div class="flex items-center gap-4 mt-8">
+              <div
+                class="w-12 h-12 rounded-full bg-ink text-gold flex items-center justify-center font-bold"
+              >
+                PS
+              </div>
+
+              <div>
+                <div class="font-bold">Priya Sharma</div>
+                <div class="text-gray-400 text-sm">Business Owner</div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="reveal delay-2 bg-white rounded-3xl p-8 border border-gray-200"
+          >
+            <div class="flex gap-1 text-gold mb-6">★ ★ ★ ★ ★</div>
+
+            <p class="text-gray-600 leading-relaxed">
+              “A reliable partner for infrastructure development. Great team,
+              excellent execution and strong communication.”
+            </p>
+
+            <div class="flex items-center gap-4 mt-8">
+              <div
+                class="w-12 h-12 rounded-full bg-ink text-gold flex items-center justify-center font-bold"
+              >
+                SR
+              </div>
+
+              <div>
+                <div class="font-bold">Suresh Reddy</div>
+                <div class="text-gray-400 text-sm">Project Consultant</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- CTA -->
+    <!-- ========================================================= -->
+
+    <section id="contact" class="relative py-20 bg-ink overflow-hidden">
+      <div class="absolute inset-0 opacity-20">
+        <div
+          class="absolute inset-0"
+          style="
+            background-image:
+              linear-gradient(rgba(245, 183, 44, 0.15) 1px, transparent 1px),
+              linear-gradient(
+                90deg,
+                rgba(245, 183, 44, 0.15) 1px,
+                transparent 1px
+              );
+            background-size: 50px 50px;
+          "
+        ></div>
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="gold-gradient rounded-[2rem] p-8 lg:p-14 reveal">
+          <div
+            class="flex flex-col lg:flex-row items-center justify-between gap-10"
+          >
+            <div>
+              <div
+                class="text-ink/60 text-xs font-black uppercase tracking-[.25em] mb-4"
+              >
+                Let's Build Together
+              </div>
+
+              <h2
+                class="display text-4xl lg:text-6xl font-black text-ink leading-tight"
+              >
+                Have a Project
+                <br />
+                in Mind?
+              </h2>
+
+              <p class="text-ink/65 mt-4 max-w-lg">
+                Tell us about your vision and let's turn it into something built
+                to last.
+              </p>
+            </div>
+
+            <a
+              href="mailto:info@brbinfra.com"
+              class="group shrink-0 bg-ink text-white px-7 py-5 rounded-2xl font-bold flex items-center gap-4 hover:scale-105 transition"
+            >
+              Get a Free Quote
+
+              <span
+                class="w-9 h-9 bg-gold rounded-full text-ink flex items-center justify-center group-hover:rotate-45 transition"
+              >
+                <i data-lucide="arrow-up-right" class="w-5"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- FOOTER -->
+    <!-- ========================================================= -->
+
+    <footer class="bg-ink text-white border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <!-- Brand -->
+          <div>
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-11 h-11">
+                <svg
+                  viewBox="0 0 48 48"
+                  class="w-full h-full"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 40V18L15 11V40H7Z" fill="#F5B72C" />
+                  <path d="M17 40V8L25 3V40H17Z" fill="#F5B72C" />
+                  <path d="M27 40V15L35 9V40H27Z" fill="#F5B72C" />
+                  <path
+                    d="M4 43H39"
+                    stroke="#F5B72C"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <div class="text-xl font-black display">BRB</div>
+                <div
+                  class="text-[9px] text-white/40 uppercase tracking-[.18em]"
+                >
+                  Infra Pvt Ltd
+                </div>
+              </div>
+            </div>
+
+            <p class="text-white/40 leading-relaxed text-sm max-w-xs">
+              Building a stronger tomorrow through quality, integrity and
+              innovation.
+            </p>
+
+            <div class="flex gap-3 mt-7">
+              <!-- LinkedIn -->
+              <a
+                href="#"
+                aria-label="LinkedIn"
+                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-ink hover:bg-gold hover:border-gold transition-all duration-300 hover:-translate-y-1"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="w-[18px] h-[18px]"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V8.99h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.61 0 4.27 2.37 4.27 5.45v6.3ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM3.56 20.45h3.57V8.99H3.56v11.46ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45C23.2 24 24 .77 24 1.72V22.28C24 23.23 23.2 24 22.22 24Z"
+                  />
+                </svg>
+              </a>
+
+              <!-- Facebook -->
+              <a
+                href="#"
+                aria-label="Facebook"
+                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-ink hover:bg-gold hover:border-gold transition-all duration-300 hover:-translate-y-1"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="w-[18px] h-[18px]"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07c0 6.02 4.39 11.01 10.13 11.93v-8.43H7.08v-3.5h3.05V9.4c0-3.02 1.79-4.69 4.54-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.27h3.32l-.53 3.5h-2.79V24C19.61 23.08 24 18.09 24 12.07Z"
+                  />
+                </svg>
+              </a>
+
+              <!-- Instagram -->
+              <a
+                href="#"
+                aria-label="Instagram"
+                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-ink hover:bg-gold hover:border-gold transition-all duration-300 hover:-translate-y-1"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="w-[18px] h-[18px]"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.25-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"
+                  />
+                </svg>
+              </a>
+
+              <!-- YouTube -->
+              <a
+                href="#"
+                aria-label="YouTube"
+                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-ink hover:bg-gold hover:border-gold transition-all duration-300 hover:-translate-y-1"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="w-[18px] h-[18px]"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M23.5 6.2a3.01 3.01 0 0 0-2.12-2.13C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.52A3.01 3.01 0 0 0 .5 6.2 31.23 31.23 0 0 0 0 12a31.23 31.23 0 0 0 .5 5.8 3.01 3.01 0 0 0 2.12 2.13c1.88.52 9.38.52 9.38.52s7.5 0 9.38-.52a3.01 3.01 0 0 0 2.12-2.13A31.23 31.23 0 0 0 24 12a31.23 31.23 0 0 0-.5-5.8ZM9.55 15.6V8.4L15.82 12l-6.27 3.6-6.27 3.6Z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Links -->
+          <div>
+            <h3 class="font-bold mb-6">Quick Links</h3>
+
+            <div class="space-y-3 text-sm text-white/45">
+              <a href="#home" class="block hover:text-gold transition">Home</a>
+              <a href="#about" class="block hover:text-gold transition"
+                >About</a
+              >
+              <a href="#services" class="block hover:text-gold transition"
+                >Services</a
+              >
+              <a href="#projects" class="block hover:text-gold transition"
+                >Projects</a
+              >
+              <a href="#testimonials" class="block hover:text-gold transition"
+                >Testimonials</a
+              >
+              <a href="#contact" class="block hover:text-gold transition"
+                >Contact</a
+              >
+            </div>
+          </div>
+
+          <!-- Services -->
+          <div>
+            <h3 class="font-bold mb-6">Our Services</h3>
+
+            <div class="space-y-3 text-sm text-white/45">
+              <div>Residential Construction</div>
+              <div>Commercial Projects</div>
+              <div>Infrastructure Development</div>
+              <div>Renovation & Remodeling</div>
+              <div>Project Consulting</div>
+            </div>
+          </div>
+
+          <!-- Contact -->
+          <div>
+            <h3 class="font-bold mb-6">Contact Us</h3>
+
+            <div class="space-y-5 text-sm text-white/45">
+              <div class="flex gap-3">
+                <i data-lucide="map-pin" class="text-gold w-5 shrink-0"></i>
+                <span>
+                  123 Construction Street,
+                  <br />
+                  Hyderabad, Telangana — 500001
+                </span>
+              </div>
+
+              <div class="flex gap-3">
+                <i data-lucide="phone" class="text-gold w-5 shrink-0"></i>
+                <span>+91 98765 43210</span>
+              </div>
+
+              <div class="flex gap-3">
+                <i data-lucide="mail" class="text-gold w-5 shrink-0"></i>
+                <span>info@brbinfra.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-white/10 mt-14 pt-7 flex flex-col md:flex-row justify-between gap-4 text-xs text-white/30"
+        >
+          <div>
+            © <span id="year"></span> BRB Infra Pvt Ltd. All rights reserved.
+          </div>
+
+          <div>Built with precision for a better tomorrow.</div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ========================================================= -->
+    <!-- BACK TO TOP -->
+    <!-- ========================================================= -->
+
+    <button
+      id="backTop"
+      class="fixed bottom-6 right-6 w-12 h-12 rounded-full gold-gradient text-ink flex items-center justify-center shadow-lg opacity-0 translate-y-5 pointer-events-none transition-all duration-300 z-40"
+    >
+      <i data-lucide="arrow-up"></i>
+    </button>
+
+    <!-- ========================================================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ========================================================= -->
+
+    <script>
+      // Icons
+      lucide.createIcons();
+
+      // Current Year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Navbar
+      const navbar = document.getElementById("navbar");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 60) {
+          navbar.classList.add("nav-scrolled");
+        } else {
+          navbar.classList.remove("nav-scrolled");
+        }
+      });
+
+      // Mobile Menu
+      const menuButton = document.getElementById("menuButton");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      menuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("open");
+
+        const icon = mobileMenu.classList.contains("open") ? "x" : "menu";
+
+        menuButton.innerHTML = `<i data-lucide="${icon}"></i>`;
+
+        lucide.createIcons();
+      });
+
+      // Close mobile menu after click
+      document.querySelectorAll("#mobileMenu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("open");
+        });
+      });
+
+      // Scroll Reveal
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+            }
+          });
+        },
+        {
+          threshold: 0.12,
+        },
+      );
+
+      document.querySelectorAll(".reveal").forEach((element) => {
+        observer.observe(element);
+      });
+
+      // Counters
+      let countersStarted = false;
+
+      const counterObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting || countersStarted) return;
+
+            countersStarted = true;
+
+            document.querySelectorAll(".counter").forEach((counter) => {
+              const target = Number(counter.dataset.target);
+
+              let current = 0;
+
+              const duration = 1800;
+
+              const start = performance.now();
+
+              function update(now) {
+                const progress = Math.min((now - start) / duration, 1);
+
+                const eased = 1 - Math.pow(1 - progress, 4);
+
+                current = Math.floor(target * eased);
+
+                counter.textContent = current.toLocaleString();
+
+                if (progress < 1) {
+                  requestAnimationFrame(update);
+                } else {
+                  counter.textContent = target.toLocaleString();
+                }
+              }
+
+              requestAnimationFrame(update);
+            });
+          });
+        },
+        {
+          threshold: 0.5,
+        },
+      );
+
+      const statsSection = document.querySelector(".counter");
+
+      if (statsSection) {
+        counterObserver.observe(statsSection);
+      }
+
+      // Cursor glow
+      const cursorGlow = document.getElementById("cursorGlow");
+
+      window.addEventListener("mousemove", (e) => {
+        cursorGlow.style.left = `${e.clientX}px`;
+        cursorGlow.style.top = `${e.clientY}px`;
+      });
+
+      // Back to top
+      const backTop = document.getElementById("backTop");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 700) {
+          backTop.classList.remove(
+            "opacity-0",
+            "translate-y-5",
+            "pointer-events-none",
+          );
+        } else {
+          backTop.classList.add(
+            "opacity-0",
+            "translate-y-5",
+            "pointer-events-none",
+          );
+        }
+      });
+
+      backTop.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // Smooth anchor scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          const target = document.querySelector(this.getAttribute("href"));
+
+          if (!target) return;
+
+          e.preventDefault();
+
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
